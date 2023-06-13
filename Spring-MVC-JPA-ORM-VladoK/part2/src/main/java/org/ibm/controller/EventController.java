@@ -15,7 +15,7 @@ public class EventController {
   private EventService eventService;
 
   @GetMapping(value = "/")
-  public String getAllEvents(Model model) {
+  public String getInitialPage(Model model) {
     model.addAttribute("parties", eventService.getEventList());
     model.addAttribute("partyEvent", new PartyEvent());
     return "events";
@@ -25,5 +25,13 @@ public class EventController {
   public String add(Model model, @ModelAttribute PartyEvent partyEvent) {
     eventService.addEvent(partyEvent);
     return "redirect:/api/";
+  }
+
+  @PostMapping(value = "/findUser")
+  public String findUser(Model model, @RequestParam String userName) {
+    model.addAttribute("partiesFromUser", eventService.getPartiesBasedOnOrganizationName(userName));
+    model.addAttribute("parties", eventService.getEventList());
+    model.addAttribute("partyEvent", new PartyEvent());
+    return "events";
   }
 }

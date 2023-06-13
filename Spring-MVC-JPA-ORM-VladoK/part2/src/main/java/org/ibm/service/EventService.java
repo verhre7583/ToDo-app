@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class EventService {
@@ -30,8 +31,12 @@ public class EventService {
     partyEventRepository.save(partyEvent);
   }
 
-
   public List<PartyEvent> getEventList() {
     return partyEventRepository.findAll();
   }
+
+  public Set<PartyEvent> getPartiesBasedOnOrganizationName(String organizationName) {
+    return partyEventRepository.getPartiesByCreatorName(organizationName);
+  }
+
 }
