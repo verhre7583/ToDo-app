@@ -37,19 +37,21 @@
     </div>
 </form>
 
-<table class="table table-striped table-bordered">
-    <tr>
-        <th>Name</th>
-        <th>Action</th>
-    </tr>
-    <tr th:if="${#lists.isEmpty(partiesFromUser)}">
-        <td colspan="5">No Records found. Add some...!</td>
-    </tr>
-    <tr th:each="party : ${partiesFromUser}">
-        <td th:text="${party.userName}"></td>
-        <td th:text="${party.place}"></td>
-    </tr>
-</table>
+<span th:text="${partiesFromUser}"></span>
+
+<!--<table class="table table-striped table-bordered">-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Action</th>-->
+<!--    </tr>-->
+<!--    <tr th:if="${#lists.isEmpty(partiesFromUser)}">-->
+<!--        <td colspan="5">No Records found. Add some...!</td>-->
+<!--    </tr>-->
+<!--    <tr th:each="party : ${partiesFromUser}">-->
+<!--        <td th:text="${party.userName}"></td>-->
+<!--        <td th:text="${party.place}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
 
 
 <table class="table table-striped table-bordered">

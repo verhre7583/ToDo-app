@@ -10,6 +10,10 @@ import java.util.Set;
 @Repository
 public interface PartyEventRepository extends JpaRepository<PartyEvent, Long> {
 
+  //ukazat podporu JPA bez query
+  PartyEvent findByUserName(String userName);
+
+  //manualne query
   @Query(value = "select * from party where names = ?1", nativeQuery = true)
   Set<PartyEvent> getPartiesByCreatorName(String name);
 

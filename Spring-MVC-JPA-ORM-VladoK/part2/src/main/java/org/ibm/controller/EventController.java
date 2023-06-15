@@ -1,6 +1,7 @@
 package org.ibm.controller;
 
 import org.ibm.model.PartyEvent;
+import org.ibm.repository.PartyEventRepository;
 import org.ibm.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ public class EventController {
 
   @Autowired
   private EventService eventService;
+
+  @Autowired
+  private PartyEventRepository partyEventRepository;
 
   @GetMapping(value = "/")
   public String getInitialPage(Model model) {
@@ -29,7 +33,7 @@ public class EventController {
 
   @PostMapping(value = "/findUser")
   public String findUser(Model model, @RequestParam String userName) {
-    model.addAttribute("partiesFromUser", eventService.getPartiesBasedOnOrganizationName(userName));
+    model.addAttribute("partiesFromUser", eventService.getEventFromName(userName));
     model.addAttribute("parties", eventService.getEventList());
     model.addAttribute("partyEvent", new PartyEvent());
     return "events";

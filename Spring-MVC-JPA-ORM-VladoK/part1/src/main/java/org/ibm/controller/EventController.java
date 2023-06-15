@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api")
 public class EventController {
 
   @Autowired
@@ -24,6 +23,6 @@ public class EventController {
   @PostMapping(value = "/")
   public String add(Model model, @ModelAttribute PartyEvent partyEvent) {
     eventService.addEvent(partyEvent);
-    return "redirect:/api/";
+    return "redirect:/";
   }
 }

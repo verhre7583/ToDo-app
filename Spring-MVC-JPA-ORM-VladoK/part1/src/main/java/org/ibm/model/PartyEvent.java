@@ -6,6 +6,7 @@ public class PartyEvent {
 
   private String place;
 
+
   public String getPlace() {
     return place;
   }
@@ -21,4 +22,5 @@ public class PartyEvent {
   public void setUserName(String userName) {
     this.userName = userName;
   }
+
 }

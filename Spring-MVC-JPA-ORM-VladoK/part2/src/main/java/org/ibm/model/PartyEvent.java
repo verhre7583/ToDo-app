@@ -11,8 +11,8 @@ public class PartyEvent {
   @GeneratedValue
   private Long id;
 
-//  pay attention on column name
-  @Column(name = "names")
+  //pay attention on column name
+  @Column(name = "userName")
   private String userName;
 
   @Column(name = "place")

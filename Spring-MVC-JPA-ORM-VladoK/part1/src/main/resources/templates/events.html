@@ -6,7 +6,7 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
             name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Thymeleaf Form handling Demo</title>
+    <title>Party</title>
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
@@ -33,6 +33,7 @@
     <tr>
         <th>Name</th>
         <th>Action</th>
+        <th>Max</th>
     </tr>
     <tr th:if="${#lists.isEmpty(parties)}">
         <td colspan="5">No Records found. Add some...!</td>
@@ -40,6 +41,7 @@
     <tr th:each="party : ${parties}">
         <td th:text="${party.userName}"></td>
         <td th:text="${party.place}"></td>
+        <td th:text="${party.max}"></td>
     </tr>
 </table>
 </body>
