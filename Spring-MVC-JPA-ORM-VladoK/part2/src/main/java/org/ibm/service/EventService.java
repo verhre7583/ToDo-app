@@ -16,15 +16,12 @@ public class EventService {
   @Autowired
   private PartyEventRepository partyEventRepository;
 
-  @Autowired
-  private CrudRepository crudRepository;
-
   private List<PartyEvent> partyEventList = new ArrayList<>();
 
   public EventService() {
     PartyEvent partyEvent = new PartyEvent();
     partyEvent.setPlace("ibm");
-    partyEvent.setUserName("vlado");
+    partyEvent.setPeopleCount(50);
     partyEventList.add(partyEvent);
   }
 
@@ -32,18 +29,24 @@ public class EventService {
   //    return partyEventList;
   //  }
 
-
-  public void addEventOnlyFromMatus(PartyEvent partyEvent) {
-    if (partyEvent.getUserName().equalsIgnoreCase("Matus")) {
-      partyEventRepository.save(partyEvent);
-    }
+  public void addEvent(PartyEvent partyEvent) {
+    partyEventRepository.save(partyEvent);
   }
+
   public List<PartyEvent> getEventList() {
     return partyEventRepository.findAll();
   }
 
+
+
+
+  public void addEventOnlyFromIBM(PartyEvent partyEvent) {
+    if (partyEvent.getPlace().equalsIgnoreCase("IBM")) {
+      partyEventRepository.save(partyEvent);
+    }
+  }
   public PartyEvent getEventFromName(String name) {
-    return partyEventRepository.findByUserName(name);
+    return partyEventRepository.findByPlace(name);
   }
 
   public Set<PartyEvent> getPartiesBasedOnOrganizationName(String organizationName) {

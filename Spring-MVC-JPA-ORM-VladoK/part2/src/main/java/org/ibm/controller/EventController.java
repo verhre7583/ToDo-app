@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/ibm")
 public class EventController {
 
   @Autowired
@@ -28,12 +28,15 @@ public class EventController {
   @PostMapping(value = "/")
   public String add(Model model, @ModelAttribute PartyEvent partyEvent) {
     eventService.addEvent(partyEvent);
-    return "redirect:/api/";
+    return "redirect:/ibm/";
   }
 
-  @PostMapping(value = "/findUser")
-  public String findUser(Model model, @RequestParam String userName) {
-    model.addAttribute("partiesFromUser", eventService.getEventFromName(userName));
+
+
+
+  @PostMapping(value = "/findPlace")
+  public String findByPlace(Model model, @RequestParam String place) {
+    model.addAttribute("partiesInPlace", eventService.getEventFromName(place));
     model.addAttribute("parties", eventService.getEventList());
     model.addAttribute("partyEvent", new PartyEvent());
     return "events";

@@ -11,7 +11,7 @@ import java.util.Set;
 public interface PartyEventRepository extends JpaRepository<PartyEvent, Long> {
 
   //ukazat podporu JPA bez query
-  PartyEvent findByUserName(String userName);
+  PartyEvent findByPlace(String place);
 
   //manualne query
   @Query(value = "select * from party where names = ?1", nativeQuery = true)

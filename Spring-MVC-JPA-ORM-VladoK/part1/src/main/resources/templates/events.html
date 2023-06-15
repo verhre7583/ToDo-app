@@ -11,13 +11,13 @@
           rel="stylesheet">
 </head>
 <body class="container">
-<h1 class="py-5">Thymeleaf Form handling Demo</h1>
-<form class="col card p-3 mb-5" method="post" th:action="@{/api/}" th:object="${partyEvent}">
+<h1 class="py-5">IBM PARTY 2023</h1>
+<form class="col card p-3 mb-5" method="post" th:action="@{/ibm/}" th:object="${partyEvent}">
     <div class="form-group">
-        <label for="userName">Name</label>
-        <input class="form-control" id="userName" placeholder="Enter Name" required
-               th:field="*{userName}"
-               type="text"/>
+        <label for="peopleCount">peopleCount</label>
+        <input class="form-control" id="peopleCount" placeholder="Enter peopleCount" required
+               th:field="*{peopleCount}"
+               type="number"/>
     </div>
     <div class="form-group">
         <label for="place">Place</label>
@@ -31,17 +31,17 @@
 
 <table class="table table-striped table-bordered">
     <tr>
-        <th>Name</th>
-        <th>Action</th>
-        <th>Max</th>
+        <th>PeopleCount</th>
+        <th>Place</th>
+<!--        <th>Max</th>-->
     </tr>
     <tr th:if="${#lists.isEmpty(parties)}">
         <td colspan="5">No Records found. Add some...!</td>
     </tr>
     <tr th:each="party : ${parties}">
-        <td th:text="${party.userName}"></td>
+        <td th:text="${party.peopleCount}"></td>
         <td th:text="${party.place}"></td>
-        <td th:text="${party.max}"></td>
+<!--        <td th:text="${party.max}"></td>-->
     </tr>
 </table>
 </body>

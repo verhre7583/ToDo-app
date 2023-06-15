@@ -14,7 +14,7 @@ public class EventService {
   public EventService(){
     PartyEvent partyEvent = new PartyEvent();
     partyEvent.setPlace("ibm");
-    partyEvent.setUserName("vlado");
+    partyEvent.setPeopleCount(0);
     partyEventList.add(partyEvent);
   }
   public List<PartyEvent> getEventList() {

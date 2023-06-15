@@ -2,7 +2,7 @@ package org.ibm.model;
 
 public class PartyEvent {
 
-  private String userName;
+  private int peopleCount;
 
   private String place;
 
@@ -11,16 +11,16 @@ public class PartyEvent {
     return place;
   }
 
-  public String getUserName() {
-    return userName;
-  }
-
   public void setPlace(String place) {
     this.place = place;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+
+  public int getPeopleCount() {
+    return peopleCount;
   }
 
+  public void setPeopleCount(int peopleCount) {
+    this.peopleCount = peopleCount;
+  }
 }
