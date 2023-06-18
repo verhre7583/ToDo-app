@@ -1,6 +1,6 @@
 package org.ibm.controller;
 
-import org.ibm.model.PartyEvent;
+import org.ibm.model.Event;
 import org.ibm.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,14 +16,14 @@ public class EventController {
 
   @GetMapping(value = "/")
   public String getAllEvents(Model model) {
-    model.addAttribute("parties", eventService.getEventList());
-    model.addAttribute("partyEvent", new PartyEvent());
+    model.addAttribute("events", eventService.getEventList());
+    model.addAttribute("partyEvent", new Event());
     return "events";
   }
 
   @PostMapping(value = "/")
-  public String add(Model model, @ModelAttribute PartyEvent partyEvent) {
-    eventService.addEvent(partyEvent);
+  public String add(Model model, @ModelAttribute Event event) {
+    eventService.addEvent(event);
     return "redirect:/ibm/";
   }
 }

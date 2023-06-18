@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -29,7 +28,7 @@ public class EventController {
 
   @GetMapping(value = "/")
   public String getInitialPage(Model model) {
-    model.addAttribute("parties", eventService.getEventList());
+    model.addAttribute("events", eventService.getEventList());
     return "events";
   }
 
@@ -42,9 +41,7 @@ public class EventController {
     User user = new User();
     user.setLastName(creatorLastName);
     user.setFirstName(creatorFirstName);
-
     userService.addUser(user);
-
 
     Set<Event> eventSet = new HashSet<>();
     eventSet.add(event);
@@ -57,9 +54,8 @@ public class EventController {
 
   @PostMapping(value = "/findPlace")
   public String findByPlace(Model model, @RequestParam String place) {
-    model.addAttribute("partiesInPlace", eventService.getEventFromName(place));
-    model.addAttribute("parties", eventService.getEventList());
-    model.addAttribute("partyEvent", new Event());
+    model.addAttribute("eventsInPlace", eventService.getEventsFromName(place));
+    model.addAttribute("events", eventService.getEventList());
     return "events";
   }
 }

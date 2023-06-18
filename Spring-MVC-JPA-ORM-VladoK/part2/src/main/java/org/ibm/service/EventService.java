@@ -1,9 +1,8 @@
 package org.ibm.service;
 
-import org.ibm.model.PartyEvent;
-import org.ibm.repository.PartyEventRepository;
+import org.ibm.model.Event;
+import org.ibm.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,43 +13,43 @@ import java.util.Set;
 public class EventService {
 
   @Autowired
-  private PartyEventRepository partyEventRepository;
+  private EventRepository eventRepository;
 
-  private List<PartyEvent> partyEventList = new ArrayList<>();
+  private List<Event> eventList = new ArrayList<>();
 
   public EventService() {
-    PartyEvent partyEvent = new PartyEvent();
-    partyEvent.setPlace("ibm");
-    partyEvent.setPeopleCount(50);
-    partyEventList.add(partyEvent);
+    Event event = new Event();
+    event.setPlace("ibm");
+    event.setPeopleCount(50);
+    eventList.add(event);
   }
 
   //  public List<PartyEvent> getEventList() {
   //    return partyEventList;
   //  }
 
-  public void addEvent(PartyEvent partyEvent) {
-    partyEventRepository.save(partyEvent);
+  public void addEvent(Event event) {
+    eventRepository.save(event);
   }
 
-  public List<PartyEvent> getEventList() {
-    return partyEventRepository.findAll();
+  public List<Event> getEventList() {
+    return eventRepository.findAll();
   }
 
 
 
 
-  public void addEventOnlyFromIBM(PartyEvent partyEvent) {
-    if (partyEvent.getPlace().equalsIgnoreCase("IBM")) {
-      partyEventRepository.save(partyEvent);
+  public void addEventOnlyFromIBM(Event event) {
+    if (event.getPlace().equalsIgnoreCase("IBM")) {
+      eventRepository.save(event);
     }
   }
-  public PartyEvent getEventFromName(String name) {
-    return partyEventRepository.findByPlace(name);
+  public Event getEventFromName(String name) {
+    return eventRepository.findByPlace(name);
   }
 
-  public Set<PartyEvent> getPartiesBasedOnOrganizationName(String organizationName) {
-    return partyEventRepository.getPartiesByCreatorName(organizationName);
+  public Set<Event> getEventsFromName(String organizationName) {
+    return eventRepository.getEventByPlaceName(organizationName);
   }
 
 }

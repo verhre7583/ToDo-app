@@ -1,6 +1,6 @@
 package org.ibm.model;
 
-public class PartyEvent {
+public class Event {
 
   private int peopleCount;
 

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "party")
+@Table(name = "event")
 public class Event {
 
   @Id

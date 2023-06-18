@@ -3,8 +3,8 @@ package org.ibm.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "party")
-public class PartyEvent {
+@Table(name = "event")
+public class Event {
 
   @Id
   @Column(name = "id")
@@ -35,19 +35,19 @@ public class PartyEvent {
     this.place = place;
   }
 
-  @Override public String toString() {
-    return "PartyEvent{" +
-        "id=" + id +
-        ", peopleCount=" + peopleCount +
-        ", place='" + place + '\'' +
-        '}';
-  }
-
   public int getPeopleCount() {
     return peopleCount;
   }
 
   public void setPeopleCount(int peopleCount) {
     this.peopleCount = peopleCount;
+  }
+
+  @Override public String toString() {
+    return "Event{" +
+        "id=" + id +
+        ", peopleCount=" + peopleCount +
+        ", place='" + place + '\'' +
+        '}';
   }
 }

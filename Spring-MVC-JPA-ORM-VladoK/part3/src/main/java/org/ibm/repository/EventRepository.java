@@ -10,14 +10,15 @@ import java.util.Set;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-  //ukazat podporu JPA bez query
+  //ukazat podporu JPA bez query, musi vratit iba jedno
   Event findByPlace(String place);
 
+
+
+
   //manualne query
-  @Query(value = "select * from party where names = ?1", nativeQuery = true)
-  Set<Event> getPartiesByCreatorName(String name);
-
-
+  @Query(value = "select * from event where place = ?1", nativeQuery = true)
+  Set<Event> getEventByPlaceName(String name);
 
   //  @Query(value = "select * from party where place = ?1", nativeQuery = true)
   //  Set<PartyEvent> getPartiesByPlaceName(String place);

@@ -11,7 +11,7 @@ public class UserService {
   @Autowired UserRepository userRepository;
 
   public void addUser(User user){
-    userRepository.save(user);
+    userRepository.saveAndFlush(user);
   }
 
 

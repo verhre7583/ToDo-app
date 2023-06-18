@@ -45,8 +45,8 @@ public class EventService {
     return eventRepository.findByPlace(name);
   }
 
-  public Set<Event> getPartiesBasedOnOrganizationName(String organizationName) {
-    return eventRepository.getPartiesByCreatorName(organizationName);
+  public Set<Event> getEventsFromName(String organizationName) {
+    return eventRepository.getEventByPlaceName(organizationName);
   }
 
 }

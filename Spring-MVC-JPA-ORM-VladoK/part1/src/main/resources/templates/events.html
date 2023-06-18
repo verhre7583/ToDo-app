@@ -35,12 +35,12 @@
         <th>Place</th>
 <!--        <th>Max</th>-->
     </tr>
-    <tr th:if="${#lists.isEmpty(parties)}">
+    <tr th:if="${#lists.isEmpty(events)}">
         <td colspan="5">No Records found. Add some...!</td>
     </tr>
-    <tr th:each="party : ${parties}">
-        <td th:text="${party.peopleCount}"></td>
-        <td th:text="${party.place}"></td>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.peopleCount}"></td>
+        <td th:text="${event.place}"></td>
 <!--        <td th:text="${party.max}"></td>-->
     </tr>
 </table>
