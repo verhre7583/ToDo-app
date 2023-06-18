@@ -14,18 +14,17 @@
 </head>
 <body class="container">
 <h1 class="py-5">IBM Party 2023</h1>
-<form class="col card p-3 mb-5" method="post" th:action="@{/ibm/}" th:object="${partyEvent}">
+<form class="col card p-3 mb-5" method="post" th:action="@{/ibm/}">
     <div class="form-group">
         <label for="peopleCount">Count</label>
-        <input class="form-control" id="peopleCount" placeholder="Enter people count" required
-               th:field="*{peopleCount}"
-               type="number"/>
-    </div>
-    <div class="form-group">
-        <label for="place">Place</label>
-        <input class="form-control" id="place" placeholder="Place" required
-               th:field="*{place}"
-               type="text"/>
+        <input type="number" th:value="${peopleCount}" name="peopleCount"/>
+        <label for="place">Place of event</label>
+        <input type="text" th:value="${place}" name="place"/>
+        <label for="creatorFirstName">Creator - firstName</label>
+        <input type="text" th:value="${creatorFirstName}" name="creatorFirstName"/>
+        <label for="creatorLastName">Creator - LastName</label>
+        <input type="text" th:value="${creatorLastName}" name="creatorLastName"/>
+        <input class="btn btn-primary" type="submit">
     </div>
     <input class="btn btn-primary" type="submit" value="Create Event">
 </form>
@@ -66,10 +65,13 @@
     <tr th:if="${#lists.isEmpty(parties)}">
         <td colspan="5">No Records found. Add some...!</td>
     </tr>
+    <tr th:if="!${#lists.isEmpty(parties)}">
     <tr th:each="party : ${parties}">
         <td th:text="${party.peopleCount}"></td>
         <td th:text="${party.place}"></td>
     </tr>
+    </tr>
+
 </table>
 </body>
 </html>

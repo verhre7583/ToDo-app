@@ -1,6 +1,6 @@
 package org.ibm.repository;
 
-import org.ibm.model.PartyEvent;
+import org.ibm.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface PartyEventRepository extends JpaRepository<PartyEvent, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 
   //ukazat podporu JPA bez query
-  PartyEvent findByPlace(String place);
+  Event findByPlace(String place);
 
   //manualne query
   @Query(value = "select * from party where names = ?1", nativeQuery = true)
-  Set<PartyEvent> getPartiesByCreatorName(String name);
+  Set<Event> getPartiesByCreatorName(String name);
 
 
 

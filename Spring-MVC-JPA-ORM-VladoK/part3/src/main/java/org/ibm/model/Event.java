@@ -1,10 +1,14 @@
 package org.ibm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "party")
-public class PartyEvent {
+public class Event {
 
   @Id
   @Column(name = "id")
@@ -17,6 +21,10 @@ public class PartyEvent {
 
   @Column(name = "place")
   private String place;
+
+  @ManyToMany(mappedBy = "eventSet")
+  private Set<User> userSet = new HashSet<>();
+
 
   public void setId(Long id) {
     this.id = id;
@@ -34,20 +42,19 @@ public class PartyEvent {
   public void setPlace(String place) {
     this.place = place;
   }
-
-  @Override public String toString() {
-    return "PartyEvent{" +
-        "id=" + id +
-        ", peopleCount=" + peopleCount +
-        ", place='" + place + '\'' +
-        '}';
-  }
-
   public int getPeopleCount() {
     return peopleCount;
   }
 
   public void setPeopleCount(int peopleCount) {
     this.peopleCount = peopleCount;
+  }
+
+  public Set<User> getUserSet() {
+    return userSet;
+  }
+
+  public void setUserSet(Set<User> userSet) {
+    this.userSet = userSet;
   }
 }
