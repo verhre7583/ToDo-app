@@ -11,7 +11,7 @@ import java.util.Set;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
   //ukazat podporu JPA bez query, musi vratit iba jedno
-  Event findByPlace(String place);
+  Event findByplace(String place);
 
 
 

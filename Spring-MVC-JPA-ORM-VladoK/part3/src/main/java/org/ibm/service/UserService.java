@@ -14,5 +14,4 @@ public class UserService {
     userRepository.saveAndFlush(user);
   }
 
-
 }

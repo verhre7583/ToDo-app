@@ -42,11 +42,11 @@ public class EventService {
     }
   }
   public Event getEventFromName(String name) {
-    return eventRepository.findByPlace(name);
+    return eventRepository.findByplace(name);
   }
 
-  public Set<Event> getEventsFromName(String organizationName) {
-    return eventRepository.getEventByPlaceName(organizationName);
+  public Set<Event> getEventsFromName(String place) {
+    return eventRepository.getEventByPlaceName(place);
   }
 
 }

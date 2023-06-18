@@ -57,4 +57,12 @@ public class Event {
   public void setUserSet(Set<User> userSet) {
     this.userSet = userSet;
   }
+
+  @Override public String toString() {
+    return "Event{" +
+        "id=" + id +
+        ", peopleCount=" + peopleCount +
+        ", place='" + place + '\'' +
+        '}';
+  }
 }

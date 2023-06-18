@@ -52,4 +52,12 @@ public class User {
   public void setEventSet(Set<Event> eventSet) {
     this.eventSet = eventSet;
   }
+
+  @Override public String toString() {
+    return "User{" +
+        "id=" + id +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        '}';
+  }
 }

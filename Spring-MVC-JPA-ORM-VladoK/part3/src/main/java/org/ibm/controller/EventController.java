@@ -34,18 +34,21 @@ public class EventController {
 
   @PostMapping(value = "/")
   public String add(Model model, @RequestParam Integer peopleCount, @RequestParam String place, @RequestParam String creatorFirstName, @RequestParam String creatorLastName) {
+    User user = new User();
+    user.setLastName(creatorLastName);
+    user.setFirstName(creatorFirstName);
+
+    userService.addUser(user);
+
     Event event = new Event();
     event.setPlace(place);
     event.setPeopleCount(peopleCount);
 
-    User user = new User();
-    user.setLastName(creatorLastName);
-    user.setFirstName(creatorFirstName);
-    userService.addUser(user);
-
     Set<Event> eventSet = new HashSet<>();
     eventSet.add(event);
     user.setEventSet(eventSet);
+
+
 
     eventService.addEvent(event);
 
@@ -54,7 +57,7 @@ public class EventController {
 
   @PostMapping(value = "/findPlace")
   public String findByPlace(Model model, @RequestParam String place) {
-    model.addAttribute("eventsInPlace", eventService.getEventsFromName(place));
+    model.addAttribute("eventInPlace", eventService.getEventsFromName(place));
     model.addAttribute("events", eventService.getEventList());
     return "events";
   }
